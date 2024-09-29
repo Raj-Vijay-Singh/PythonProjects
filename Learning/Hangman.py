@@ -4,7 +4,7 @@ def hangman():
     print("HANGMAN")
     print("[A game where you guess a word by guessing characters. Be careful! You can only afford 6 wrong guesses.]")
     print("-----------------------")
-    with open("C:/Users/Admin/PycharmProjects/Learning/text files/hangman.txt","r") as source:
+    with open("hangman.txt","r") as source:
         lines = source.readlines()
         lan = lines[0].split()
         wan = lines[1].split()
