@@ -79,9 +79,9 @@ def hangman():
     choice = input("\nType 'Yes' to play again or 'No' to quit.\nEnter: ").upper()
 
     while choice != "YES" and choice != "NO":
-        print("Enter 'Yes' or 'No'.")
+        print("\nEnter 'Yes' or 'No'.")
         print()
-        choice = input("\nType 'Yes' to play again or 'No' to quit.\nEnter: ").upper()
+        choice = input("Type 'Yes' to play again or 'No' to quit.\nEnter: ").upper()
 
     if choice == "YES":
         hangman()
