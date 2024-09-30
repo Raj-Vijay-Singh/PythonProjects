@@ -6,86 +6,69 @@ def hangman():
     print("-----------------------")
     with open("hangman.txt","r") as source:
         lines = source.readlines()
-        lan = lines[0].split()
-        wan = lines[1].split()
-        aan = lines[2].split()
-        flo = lines[3].split()
+        lan = lines[0].split(", ")
+        wan = lines[1].split(", ")
+        aan = lines[2].split(", ")
+        flo = lines[3].split(", ")
 
     answer = random.choice(lan+wan+aan+flo)
-    fanswer = answer
 
-    if fanswer in lan:
+    if answer in lan:
         hint = "It is a land animal."
-    elif fanswer in wan:
+    elif answer in wan:
         hint = "It is a water animal."
-    elif fanswer in aan:
+    elif answer in aan:
         hint = "It is an aerial animal."
-    elif fanswer in flo:
+    elif answer in flo:
         hint = "It is a flower."
+
+    answer = answer.upper()
 
     guesses = []
     chars = len(answer)
-    count = 0
     print("THE WORD IS:\n"+("_  "* (chars-1) +"_"))
     blank = "_" * chars
     print("\nLET US BEGIN.\n")
     tries = 0
-    while tries < 7:
+    while tries < 6:
         guess = input("Enter your guess (Enter 5 to see hint): ").upper()
         pos = answer.find(guess)
 
         if guess == "5":
             print(hint)
             print()
+            continue
 
-        elif len(guess) != 1 or guess.isalpha() == False:
+        if len(guess) != 1 or guess.isalpha() == False:
             print("Enter ONE character from A-Z.\n")
+            continue
 
-        elif guess in guesses:
+        if guess in guesses:
             print("You already guessed this character.\n")
+            continue
 
-        elif pos < 0:
-            tries += 1
-            if tries == 1:
-                print("Wrong! You can only make 5 more wrong guesses.")
-            if tries == 2:
-                print("Wrong! You can only make 4 more wrong guesses.")
-            if tries == 3:
-                print("Wrong! You can only make 3 more wrong guesses.")
-            if tries == 4:
-                print("Wrong! You can only make 2 more wrong guesses.")
-            if tries == 5:
-                print("Wrong! You can only make 1 more wrong guess.")
-            if tries == 6:
-                print(f"You couldn't guess the word. The word was {fanswer}. Better luck next time!")
-                break
+        if guess != "5":
             guesses.append(guess)
-            print(" ")
 
-        elif pos >= 0:
-            while pos >= 0:
-                answer = answer.replace(answer[pos],"_",1)     #1 means only replace one occurence. We are running a loop, hence replacing each occurence once.
-                blank = blank[:pos]+guess+blank[pos +1:]     #We are basically modifying blank variable by slicing it midway and inserting the guessed char in position. We can't use replace because every char is _ and it will replace the first one always.
-                pos = answer.find(guess)
-                guesses.append(guess)
+        if guess not in answer:
+            tries += 1
+            if tries < 6:
+                print(f"Wrong! You can only make {6-tries} more wrong guess{'es' if (6-tries) >1 else ''}.\n")
 
-            for i in blank:
-                print(i,end=" ")
-            print("\n")
-            if blank.find("_") < 0:
-                print("You got it, champ! See you next time around!")
-                break
+        else:
+            blank = ''.join([guess if answer[i]==guess else blank[i] for i in range(chars)])
+            print(" ".join(blank)+"\n")
 
-    choice = input("\nType 'Yes' to play again or 'No' to quit.\nEnter: ").upper()
+        if "_" not in blank:
+            print("You got it! Well done!\n")
+            break
+        else:
+            if tries == 6:
+                print(f"You were unable to guess the word. The word was {answer}. Better luck next time!\n")
 
-    while choice != "YES" and choice != "NO":
-        print("\nEnter 'Yes' or 'No'.")
-        print()
-        choice = input("Type 'Yes' to play again or 'No' to quit.\nEnter: ").upper()
-
-    if choice == "YES":
+    if input("Enter 'Yes' to play again, or anything else to exit: ").upper() == "YES":
         hangman()
     else:
-        pass
+        print("\nThank you for playing!")
 
 hangman()

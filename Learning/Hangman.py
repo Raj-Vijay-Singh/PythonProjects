@@ -6,10 +6,10 @@ def hangman():
     print("-----------------------")
     with open("hangman.txt","r") as source:
         lines = source.readlines()
-        lan = lines[0].split()
-        wan = lines[1].split()
-        aan = lines[2].split()
-        flo = lines[3].split()
+        lan = lines[0].split(", ")
+        wan = lines[1].split(", ")
+        aan = lines[2].split(", ")
+        flo = lines[3].split(", ")
 
     answer = random.choice(lan+wan+aan+flo)
     fanswer = answer

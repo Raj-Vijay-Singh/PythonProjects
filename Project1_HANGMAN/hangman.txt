@@ -1,4 +1,4 @@
-LION TIGER ELEPHANT GIRAFFE ZEBRA KANGAROO RHINOCEROS HIPPOPOTAMUS WOLF LEOPARD MONKEY HORSE PANTHER HYENA 
-SHARK DOLPHIN WHALE OCTOPUS JELLYFISH SEAHORSE TURTLE STARFISH SWORDFISH SQUID 
-EAGLE FALCON PARROT SPARROW HAWK PIGEON OWL VULTURE PEACOCK SWAN 
-ROSE LILY TULIP DAISY SUNFLOWER LOTUS HIBISCUS MARIGOLD JASMINE LAVENDER
+Lion, Tiger, Elephant, Giraffe, Zebra, Kangaroo, Rhinoceros, Hippopotamus, Wolf, Leopard, Monkey, Horse, Panther, Hyena, Cheetah, Bison, Antelope, Gorilla, Chimpanzee, Bear, Buffalo, Fox, Moose, Deer, Sloth
+Shark, Dolphin, Whale, Octopus, Jellyfish, Seahorse, Turtle, Starfish, Swordfish, Squid, Stingray, Lobster, Crab, Seal, Walrus, Clownfish, Eel, Piranha, Shrimp, Manta Ray, Sea Urchin, Barracuda, Anglerfish, Beluga, Manatee
+Eagle, Falcon, Parrot, Sparrow, Hawk, Pigeon, Owl, Vulture, Peacock, Swan, Flamingo, Toucan, Woodpecker, Pelican, Crane, Seagull, Albatross, Stork, Hummingbird, Robin, Cardinal, Heron, Penguin, Cockatoo, Macaw
+Rose, Lily, Tulip, Daisy, Sunflower, Lotus, Hibiscus, Marigold, Jasmine, Lavender, Orchid, Daffodil, Chrysanthemum, Poppy, Peony, Camellia, Iris, Gardenia, Azalea, Geranium, Petunia, Zinnia, Begonia, Violet, Dahlia
