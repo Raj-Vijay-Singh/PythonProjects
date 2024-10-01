@@ -56,10 +56,10 @@ def setup():
             return False
 
     # DISABLE BEFORE RUNNING, ONLY FOR TESTING
-    for x in range(5):
-        for y in range(5):
-            print(f"{field[x][y]:^3}", end=" ")
-        print()
+    # for x in range(5):
+    #     for y in range(5):
+    #         print(f"{field[x][y]:^3}", end=" ")
+    #     print()
     # DISABLE BEFORE RUNNING, ONLY FOR TESTING
 
     while lives != 0 and heart == True:
