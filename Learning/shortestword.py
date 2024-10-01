@@ -17,10 +17,7 @@ for word in words:
 
 swordlist.append(sword)
 
-if len(swordlist) == 1:
-    print("The shortest word here is: ")
-elif len(swordlist) > 1:
-    print("The shortest words here are: ")
+print("The shortest word here is: " if len(swordlist) == 1 else "The shortest words here are: ")
 
 for i in swordlist:
     print(i)

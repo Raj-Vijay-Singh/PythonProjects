@@ -1,0 +1,9 @@
+PIL: It provides the python interpreter with image editing capabilites.
+PIL.image.copy(): This method will copy and paste to other image object but also retain the originality.
+Blurring: It is the process of reducing the noise of the image.
+There are some methods of image filter.
+- PIL.ImageFilter.BoxBlurr(<radius goes here>)
+It supports float value and float radius.
+
+- PIL.ImageFilter.GurssianBlurr
+This method changes the intensity of the image. By changing the value of radius, the intensity of the blurr will get changed.
