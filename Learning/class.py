@@ -1,8 +1,5 @@
-num1 = input("Enter your first number: ")
-num2 = input("Enter your second number: ")
-temp = num1
-num1 = num2
-num2 = temp
-
-print(num1)
-print(num2)
+age = int(input("Please enter your age: "))
+if age > 18:
+    print("You are eligible.")
+else:
+    print("You are not eligible.")

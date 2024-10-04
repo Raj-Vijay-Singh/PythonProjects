@@ -70,7 +70,7 @@ def setup():
             print()
         print("---------------------")
         guess = input("Which letter do you want to inspect?: ").upper()
-        while guess.isalpha() == False or len(guess) != 1:
+        while guess.isalpha() is False or len(guess) != 1:
             print("Enter one character (A-Y): ")
             print("---------------------")
             guess = input("Which letter do you want to inspect?: ").upper()
