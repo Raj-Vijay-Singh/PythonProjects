@@ -1,0 +1,6 @@
+tuple = ("welcome","this,","is","Tutorialspoint","Website",10)
+print(f"Tuple slicing from index 1 to index 6: {tuple[1:6]}")
+print(f"Tuple slicing til index 7: {tuple[:7]}")
+print(f"Tuple slicing from index 2: {tuple[:2]}")
+print(f"Tuple slicing without start and stop values: {tuple[:]}")
+print(f"Tuple slicing in reverse order: {tuple[::-1]}")

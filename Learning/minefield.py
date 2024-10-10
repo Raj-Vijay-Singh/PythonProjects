@@ -56,10 +56,10 @@ def setup():
             return False
 
     # DISABLE BEFORE RUNNING, ONLY FOR TESTING
-    for x in range(5):
-        for y in range(5):
-            print(f"{field[x][y]:^3}", end=" ")
-        print()
+    # for x in range(5):
+    #     for y in range(5):
+    #         print(f"{ffield[x][y]:^3}", end=" ")
+    #     print()
     # DISABLE BEFORE RUNNING, ONLY FOR TESTING
 
     while lives != 0 and heart == True:
@@ -70,7 +70,7 @@ def setup():
             print()
         print("---------------------")
         guess = input("Which letter do you want to inspect?: ").upper()
-        while guess.isalpha() == False or len(guess) != 1:
+        while guess.isalpha() is False or len(guess) != 1:
             print("Enter one character (A-Y): ")
             print("---------------------")
             guess = input("Which letter do you want to inspect?: ").upper()

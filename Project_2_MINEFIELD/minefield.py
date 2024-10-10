@@ -1,131 +1,127 @@
 import random
-import time
-import copy
-def setup():
-    print("----------------------")
-    diff = int(input("Choose your difficulty. Enter:\n1 for Easy\n2 for Normal\n3 for Hard\n4 for Extreme\nEnter (1, 2, 3 or 4): "))
-    while diff not in (1,2,3,4):
-        print("Enter 1, 2, 3 or 4!")
-        print("----------------------")
-        diff = int(input("Choose your difficulty. Enter:\n1 for Easy\n2 for Normal\n3 for Hard\n4 for Extreme\nEnter (1, 2, 3 or 4): "))
-    if diff == 1:
-        lives = 12
-    elif diff == 2:
-        lives = 9
-    elif diff == 3:
-        lives = 5
-    elif diff == 4:
-        lives = 3
-    show = [["A","B","C","D","E"],["F","G","H","I","J"],["K","L","M","N","O"],["P","Q","R","S","T"],["U","V","W","X","Y"]]
-    elements = ["❤","💥"]
-    field = []
-    heart = True
 
-    for i in range(5):
-        flist = []
-        for j in range(5):
-            felement = random.choice(elements)
-            flist.append(felement)
-        field.append(flist)
+def game():
+    spt = "-------------"
+    field = {"A": None, "B": None, "C": None, "D": None, "E": None,
+             "F": None, "G": None, "H": None, "I": None, "J": None,
+             "K": None, "L": None, "M": None, "N": None, "O": None,
+             "P": None, "Q": None, "R": None, "S": None, "T": None,
+             "U": None, "V": None, "W": None, "X": None, "Y": None}
 
-    ffield = copy.deepcopy(field) #Creating a new field for display purposes. Deep copy is used so that changes made in "field" dont affect "ffield"
-    def game(guess,lives):
-        ind1 = ind2 = None
-        for x in range(5):
-            for y in range(5):
-                if show[x][y] == guess:
-                    ind1 = x
-                    ind2 = y
-                    break
+    elements = ("❤","💥")
+    hearts = 10
+    liveset = {'1': 15, '2': 12, '3': 9, '4': 6, '5': 3}
 
-        if ind1 == None or ind2 == None:
-            print("You already inspected this letter.")
-            return True
+    print(f"{spt}\nTHE MINEFIELD\n"
+          f"Inspect letters to find the hearts. You lose a life if you find a mine instead. "
+          f"Find all 10 hearts to win, lose all lives to lose.\n{spt}")
+    choice = (input(f"Choose your difficulty. Enter:\n"
+                    f"1 for Easy\n"
+                    f"2 for Normal\n"
+                    f"3 for Hard\n"
+                    f"4 for Very Hard\n"
+                    f"5 for Impossible\n{spt}\n"
+                    f"Enter (1, 2, 3, 4 or 5): "))
 
-        if field[ind1][ind2] == elements[0]:
-            print("\nYou found a heart!")
-            time.sleep(1)
-            show[ind1][ind2] = elements[0]
-            field[ind1][ind2] = 0
-            return True
+    while (choice not in liveset) and (choice != "1989"):
+        print(f"Enter 1, 2, 3, 4 or 5 ONLY.\n{spt}")
+        choice = (input(f"Choose your difficulty. Enter:\n"
+                    f"1 for Easy\n"
+                    f"2 for Normal\n"
+                    f"3 for Hard\n"
+                    f"4 for Very Hard\n"
+                    f"5 for Impossible\n{spt}\n"
+                    f"Enter (1, 2, 3, 4 or 5): "))
 
-        if field[ind1][ind2] == elements[1]:
-            print(f"\nYou found a mine. Ouch. You have {lives-1} lives now.")
-            time.sleep(1)
-            show[ind1][ind2] = elements[1]
-            return False
+    if choice == "1989":
+        lives = 99
+    else:
+        lives = liveset[choice]
+    guesses = []
 
-    # DISABLE BEFORE RUNNING, ONLY FOR TESTING
-    # for x in range(5):
-    #     for y in range(5):
-    #         print(f"{ffield[x][y]:^3}", end=" ")
-    #     print()
-    # DISABLE BEFORE RUNNING, ONLY FOR TESTING
+    values = [elements[0]] * 10 + [elements[1]] * (len(field)-10)
+    random.shuffle(values)
 
-    while lives != 0 and heart == True:
-        print("---------------------")
-        for x in range(5):
-            for y in range(5):
-                print(f"{show[x][y]:^3}", end=" ")
+    for key, value in zip(field, values):
+        field[key] = value
+
+    #DISABLE BEFORE RUNNING
+    count = 0
+    for value in field.values():
+        count += 1
+        print(f"{value:<5}", end=" ")
+        if count % 5 == 0:
             print()
-        print("---------------------")
-        guess = input("Which letter do you want to inspect?: ").upper()
-        while guess.isalpha() is False or len(guess) != 1:
-            print("Enter one character (A-Y): ")
-            print("---------------------")
-            guess = input("Which letter do you want to inspect?: ").upper()
-        result = game(guess,lives)
-        if not result:
+    print(spt)
+    # DISABLE BEFORE RUNNING
+
+    while lives > 0 and hearts > 0:
+        print(f"{spt}\nYOUR FIELD: ")
+        count = 0
+        for key in field:
+            count += 1
+            if key in guesses:
+                print(f"{field[key]:<5}", end = " ")
+            else:
+                print(f"{key:<5}", end = " ")
+            if count%5 == 0:
+                print()
+        print(f"You have {lives} {'lives' if lives > 1 else 'life'}.")
+        print(spt)
+
+        guess = input("Enter one character to inspect (A-Y): ").upper()
+
+        if guess == "ADMINWIN":
+            hearts = 0
+            break
+
+        if guess == "ADMINLOSE":
+            lives = 0
+            break
+
+        if guess in guesses:
+            print("You already guessed this character! Idiot.")
+            continue
+
+        if guess not in field:
+            print("Enter only one character (A-Y).")
+            continue
+
+        guesses.append(guess)
+
+        if field[guess] == elements[0]:
+            hearts -= 1
+            print("\nYou found a heart!")
+
+        if field[guess] == elements[1]:
             lives -= 1
-        heart = False
-        for x in range(0, 5):
-            for y in range(0, 5):
-                if field[x][y] == elements[0]:
-                    heart = True
-                    break
+            if lives > 0:
+                print(f"\nYou found a mine. You have {lives} {'lives' if (lives > 1) else 'life'} now.")
 
     if lives == 0:
-        print("---------------------")
-        print("YOUR FIELD: ")
-        for x in range(5):
-            for y in range(5):
-                print(f"{show[x][y]:^3}", end=" ")
-            print()
-        print("---------------------")
-        print("MINE FIELD: ")
-        for x in range(5):
-            for y in range(5):
-                print(f"{ffield[x][y]:^3}", end=" ")
-            print()
-        print("---------------------")
-        print("Game over. You lost.")
+        print("You lost all your lives. Game over!")
+        print(f"{spt}\nMINEFIELD: ")
+        count = 0
+        for value in field.values():
+            count += 1
+            print(f"{value:<5}", end=" ")
+            if count % 5 == 0:
+                print()
+        print(f"{spt}\nYOUR FIELD: ")
+        for key in field:
+            count += 1
+            if key in guesses:
+                print(f"{field[key]:<5}", end=" ")
+            else:
+                print(f"{key:<5}", end=" ")
+            if count % 5 == 0:
+                print()
+        print(spt)
 
-    if heart == False:
-        print("---------------------")
-        print("YOUR FIELD: ")
-        for x in range(0, 5):
-            for y in range(0, 5):
-                print(f"{show[x][y]:^3}", end=" ")
-            print()
-        print("---------------------")
-        print("MINE FIELD: ")
-        for x in range(5):
-            for y in range(5):
-                print(f"{ffield[x][y]:^3}", end=" ")
-            print()
-        print("---------------------")
-        print("You won!")
+    if hearts == 0:
+        print(f"{spt}\nYou found all the hearts! Congrats!\n{spt}")
 
-    if input("----------------------\nDo you want to play again? Enter 'Yes' to play again, or anything else to quit: ").upper() == "YES":
-        setup()
-    else:
-        print("\nThank you for playing!")
+    if input("Enter 'Yes' to play again: ").upper() == "YES":
+        game()
 
-
-setup()
-
-
-
-
-
-
+game()
