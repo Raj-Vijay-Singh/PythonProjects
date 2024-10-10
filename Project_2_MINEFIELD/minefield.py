@@ -37,22 +37,23 @@ def game():
         lives = 99
     else:
         lives = liveset[choice]
+
     guesses = []
 
-    values = [elements[0]] * 10 + [elements[1]] * (len(field)-10)
+    values = [elements[0]] * hearts + [elements[1]] * (len(field)-hearts)
     random.shuffle(values)
 
     for key, value in zip(field, values):
         field[key] = value
 
     #DISABLE BEFORE RUNNING
-    count = 0
-    for value in field.values():
-        count += 1
-        print(f"{value:<5}", end=" ")
-        if count % 5 == 0:
-            print()
-    print(spt)
+    # count = 0
+    # for value in field.values():
+    #     count += 1
+    #     print(f"{value:<5}", end=" ")
+    #     if count % 5 == 0:
+    #         print()
+    # print(spt)
     # DISABLE BEFORE RUNNING
 
     while lives > 0 and hearts > 0:
