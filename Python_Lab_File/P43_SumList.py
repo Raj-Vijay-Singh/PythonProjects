@@ -1,7 +1,7 @@
 numbers = [2, 4, 6, 8]
-sum = 0
+sumlist = 0
 
 for number in numbers:
-    sum += number
+    sumlist += number
 
-print(f"Sum of all elements in the list is: {sum}.")
+print(f"Sum of all elements in the list is: {sumlist}.")

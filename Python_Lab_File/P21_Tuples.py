@@ -2,9 +2,9 @@
 t1 = ()
 print(f"Empty tuple: {t1}")
 
-# Tuple with elements
+# Tuple with integer elements
 t2 = (1, 2, 3)
-print(f"Tuple with elements: {t2}")
+print(f"Tuple with integer elements: {t2}")
 
 # Tuple with mixed elements
 t3 = (1, 98.76, "Reputation", True)

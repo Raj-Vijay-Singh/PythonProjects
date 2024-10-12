@@ -7,6 +7,6 @@ def newton(num):
     return round(h,10)
 
 num = float(input("Enter the number: "))
-print(f"Using Newton's method, the square is approximately {newton(num)}.")
+print(f"Using Newton's method, the square root of {num} is approximately {newton(num)}.")
 
 

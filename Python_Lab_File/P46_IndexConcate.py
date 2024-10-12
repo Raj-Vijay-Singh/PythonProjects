@@ -14,4 +14,4 @@ for y in list2:
     if y not in combined_list:
         combined_list.append(y)
 
-print(combined_list)
+print(f"The two lists combined as instructed:\n{combined_list}")

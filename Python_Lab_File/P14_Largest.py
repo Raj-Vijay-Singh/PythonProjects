@@ -13,10 +13,14 @@ elif num3 > num1 and num3 > num2:
     print(f"{num3} is the largest out if the three.")
 
 elif num1 == num2 == num3:
-    print("All numbers are equal.")
+    print(f"All numbers are equal. {num1} is the largest.")
 
 else:
-    print("Two of the numbers are equal, and larger than the third. Hence, there is no single largest number.")
+    print("Two numbers are equal.", end=" ")
+    if num1 == num2 or num1 == num3:
+        print(f"{num1} is the largest out of the three.")
+    else:
+        print(f"{num2} is the largest out of the three.")
 
 # Using max() function
-print(max(num1, num2, num3))
+print(f"Using max function, {max(num1, num2, num3)} is found to be the greatest out of three.")
