@@ -8,9 +8,9 @@ def game():
              "P": None, "Q": None, "R": None, "S": None, "T": None,
              "U": None, "V": None, "W": None, "X": None, "Y": None}
 
-    elements = ("❤","💥")
+    elements = ("❤", "💥", "🕳")
     hearts = 10
-    liveset = {'1': 15, '2': 12, '3': 9, '4': 6, '5': 3}
+    liveset = {'1': 10, '2': 8, '3': 6, '4': 4, '5': 2}
 
     print(f"{spt}\nTHE MINEFIELD\n"
           f"Inspect letters to find the hearts. You lose a life if you find a mine instead. "
@@ -40,13 +40,13 @@ def game():
 
     guesses = []
 
-    values = [elements[0]] * hearts + [elements[1]] * (len(field)-hearts)
+    values = [elements[0]] * hearts + [elements[1]] * 10 + [elements[2]] * 5
     random.shuffle(values)
 
     for key, value in zip(field, values):
         field[key] = value
 
-    #DISABLE BEFORE RUNNING
+    # DISABLE BEFORE RUNNING
     # count = 0
     # for value in field.values():
     #     count += 1
@@ -98,6 +98,9 @@ def game():
             lives -= 1
             if lives > 0:
                 print(f"\nYou found a mine. You have {lives} {'lives' if (lives > 1) else 'life'} now.")
+
+        if field[guess] == elements[2]:
+            print(f"\nYou found a blank. No lives were deducted.")
 
     if lives == 0:
         print("You lost all your lives. Game over!")
