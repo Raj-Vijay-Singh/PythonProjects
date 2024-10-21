@@ -1,2 +1,3 @@
-print(max(1,234,5,6464,232))
-
+a= "adhdWDF"
+a = a.capitalize()
+print(a)

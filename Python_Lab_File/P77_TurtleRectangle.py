@@ -1,0 +1,10 @@
+import turtle
+s = turtle.Turtle()
+s.fd(200)
+s.lt(90)
+s.fd(100)
+s.lt(90)
+s.fd(200)
+s.lt(90)
+s.fd(100)
+turtle.mainloop()
