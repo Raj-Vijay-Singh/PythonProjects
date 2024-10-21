@@ -1,6 +1,0 @@
-giventuple = ("Welcome", "this", "is", "TutorialsPoint", "website", 10)
-print(f"Slicing from index 1 to 6: {giventuple[1:6]}")
-print(f"Slicing till index 7: {giventuple[:7]}")
-print(f"Slicing starting from index 2: {giventuple[2:]}")
-print(f"Slicing without start and stop: {giventuple[:]}")
-print(f"Slicing in reverse: {giventuple[::-1]}")
