@@ -1,0 +1,12 @@
+import turtle
+t = turtle.Turtle()
+t.shape("turtle")
+t.color("Yellow")
+turtle.bgcolor("brown")
+turtle.bgpic(r"fate.gif")
+t.dot(100)
+t.rt(90)
+t.fd(100)
+t.rt(90)
+t.circle(200)
+turtle.mainloop()

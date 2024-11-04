@@ -1,3 +1,11 @@
-num = float(input("Enter a decimal number: "))
+print(f"A few examples of numbers rounded off:")
+print(f"7.5 rounded off to nearest whole: {round(7.5)}")
+print(f"7.8921 rounded off to nearest hundredth: {round(7.8921, 2)}")
+print(f"-6.34 rounded off to nearest tenth: {round(-6.34, 1)}")
+print(f"8.1 rounded off to nearest hundredth: {round(8.1, 2)}")
+print(f"3.122342 rounded off to nearest thousandth: {round(3.122342, 3)}")
+print()
+
+num = float(input("Enter a decimal number to round off to nearest whole: "))
 fnum = round(num)
-print(f"{num} rounded off is {fnum}.")
+print(f"{num} rounded off to nearest whole is {fnum}.")

@@ -1,15 +1,8 @@
-age = int(input("Enter your age: "))
-marks = int(input("Enter the marks you got on entrance test (out of 100): "))
+num = int(input("Enter a number: "))
 
-if (age >= 18 and age <= 25) and marks >= 90:
-    print("You are eligible for highest scholarship.")
-elif (age >= 25 and age <= 35) and marks >= 80:
-    print("You are eligible for second highest scholarship.")
-elif marks >= 70 and (age >= 18 and age <= 25):
-    print("You are eligible for third highest scholarship.")
-elif not (age>18 and marks > 70):
-    print("You are ineligible for any scholarship.")
-else:
-    print("You are eligible for lowest scholarship.")
+print(f"Is number greater than 50 and lesser than 80? - {num > 50 and num < 80}")
+print(f"Is number greater than 60 or lesser than 30? - {num > 60 or num < 30}")
+print(f"Is number not greater than 50 and lesser than 80? - {not (num > 50 and num < 80)}")
+
 
 

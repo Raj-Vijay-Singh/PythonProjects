@@ -1,14 +1,10 @@
-age = int(input("Enter your age in years: "))
+num = int(input("Enter a number: "))
 
-if age > 18:
-    print("You are not eligible to enter the exam.")
-elif age == 18:
-    print("This is your last chance to enter the exam.")
-elif 18 > age > 13:
-    print("You are eligible to enter the exam.")
-elif age == 13:
-    print("This is your first chance to enter the exam.")
-elif 13 > age > 0:
-    print("You are not eligible to enter the exam.")
-else:
-    print("The age you entered is invalid. ")
+print(f"Number equal to 50? - {num == 50}")
+print(f"Number greater than 50? - {num > 50}")
+print(f"Number lesser than 50? - {num < 50}")
+print(f"Number greater than or equal to 10? - {num >= 10}")
+print(f"Number lesser than or equal to 10? - {num <= 10}")
+print(f"Number not equal to 50? - {num != 50}")
+
+
