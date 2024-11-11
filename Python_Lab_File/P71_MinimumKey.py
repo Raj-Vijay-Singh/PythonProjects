@@ -10,4 +10,4 @@ for (x, y) in zip(dict.keys(), dict.values()):
     if y < dict[key]:
         key = x
 
-print(key)
+print(f"The key with the minimum value: {key}")

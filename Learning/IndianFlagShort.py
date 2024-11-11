@@ -2,7 +2,7 @@ import turtle
 t = turtle.Turtle()
 turtle.bgcolor("beige")
 t.color("#138808")
-t.speed(100)
+t.speed(2)
 t.pensize(5)
 t.penup()
 t.goto(-400,-250)
