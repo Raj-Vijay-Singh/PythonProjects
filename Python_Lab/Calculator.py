@@ -21,7 +21,7 @@ root.configure(bg = "beige")
 display = tk.StringVar()
 display.set("")
 
-strhist = []
+strhist = ["No history."]
 eqhist = []
 def writec(value):
     strt = display.get()
@@ -32,26 +32,25 @@ def backspace():
     display.set(strt[0:-1])
 
 def equal():
-    Calc = False
+    Calc = True
     strt = display.get()
+    strhist.append(strt)
 
-    if strt[0] in ("*", "/") or strt[-1] in ("*", "-", "+", "/"):
-        return;
-
-    for letter in strt:
-        if letter not in buttons:
-            return;
-
-        if letter in ("+", "*", "/", "-"):
-            Calc = True
+    for i in strt:
+        if strt not in buttons:
+            calc = False
+            display.set("Arithmetic Error.")
+            break
 
     if Calc:
-        strhist.append(strt)
-        ans = str(round(eval(strt), 3))
-        if ans[-1] == "0" and ans[-2] == ".":
-            ans = str(round(float(ans)))
-        eqhist.append(ans)
-        display.set(ans)
+        try:
+            ans = str(round(eval(strt), 3))
+            if ans[-1] == "0" and ans[-2] == ".":
+                ans = str(round(float(ans)))
+            eqhist.append(ans)
+            display.set(ans)
+        except:
+            display.set("Arithmetic Error.")
 
     else:
         return;
@@ -74,7 +73,7 @@ def undo():
 #             tk.Label(root, text=f"{dis} = {eq}", fg="black", bg="white", bd=10, height= 1, width=46, font=("Bahnschrift", 10, "bold"), anchor="w").grid(row = rowind, column = 0, columnspan=5)
 #             rowind += 1
 
-tk.Entry(root, textvariable = display, fg ="black", bg ="white", bd = 10, width = 21, font = ("Cambria", 20, "bold")).grid(row = 0, column = 0, columnspan = 999, sticky ="w")
+tk.Entry(root, textvariable = display, fg ="black", bg ="white", bd = 10, width = 21, font = ("Courier New", 20, "bold")).grid(row = 0, column = 0, columnspan = 999, sticky ="w")
 
 for button, pos in zip(buttons, poslist):
     but = tk.Button(root, text=button, command=lambda button = button: writec(button), bg="black", bd=10, width=3, fg="white",

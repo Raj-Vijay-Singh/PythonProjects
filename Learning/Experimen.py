@@ -1,2 +1,2 @@
 a = "whwhwhwh"
-print(a[2])
+print(a.replace("h", "i"))
